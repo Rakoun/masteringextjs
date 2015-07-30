@@ -22,6 +22,28 @@ Ext.define('Pack.Application', {
     ],
     
     launch: function () {
-        // TODO - Launch the application
+        var me = this;
+        var task = new Ext.util.DelayedTask(function() {
+            me.splashscreen.fadeOut({
+                duration: 1000,
+                remove:true
+            });
+            me.splashscreen.next().fadeOut({
+                duration: 1000,
+                remove:true
+            });
+        });
+        task.delay(2000);
+    },
+    init: function() {
+        var me = this;
+        me.splashscreen = Ext.getBody().mask(
+            'Loading application', 'splahscreen'
+        );
+        me.splashscreen.addCls('splashscree');
+        Ext.DomHelper.insertFirst(Ext.query('.x-mask-msg')[0], {
+            cls: 'x-splash-icon'
+        });
     }
+
 });
