@@ -30,7 +30,12 @@ Ext.define('Pack.Application', {
             });
             me.splashscreen.next().fadeOut({
                 duration: 1000,
-                remove:true
+                remove:true,
+                listeners: {
+                    afteranimate: function(el, startTime, eOpts ){
+                        console.log('launch') // #3
+                    }
+                }
             });
         });
         task.delay(2000);
