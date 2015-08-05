@@ -43,6 +43,28 @@ Ext.define('Packt.view.login.Login', { // #1
                     vtype: 'customPass',
                     msgTarget: 'side'
                 }
+            ],
+            dockedItems: [
+                {
+                    xtype: 'toolbar',
+                    dock: 'bottom',
+                    items: [
+                        {
+                            xtype: 'tbfill' //#25
+                        },
+                        {
+                            xtype: 'button', //#26
+                            iconCls: 'fa fa-times fa-lg',
+                            text: 'Cancel'
+                        },
+                        {
+                            xtype: 'button', //#27
+                            formBind: true, //#28
+                            iconCls: 'fa fa-sign-in fa-lg',
+                            text: 'Submit'
+                        }
+                    ]
+                }
             ]
         }
     ]

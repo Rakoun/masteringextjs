@@ -9,7 +9,7 @@ Ext.define('Pack.Application', {
     name: 'Pack',
 
     views: [
-        // TODO: add views here
+        //'login.Login' //ne marche pas si décommenté
     ],
 
     controllers: [
@@ -33,7 +33,8 @@ Ext.define('Pack.Application', {
                 remove:true,
                 listeners: {
                     afteranimate: function(el, startTime, eOpts ){
-                        console.log('launch') // #3
+                        Ext.widget('login-dialog');
+                        console.log("coucou");
                     }
                 }
             });

@@ -8,7 +8,7 @@ Ext.application({
 
     extend: 'Pack.Application',
     
-    autoCreateViewport: false,
+    autoCreateViewport: false
 	
     //-------------------------------------------------------------------------
     // Most customizations should be made to Pack.Application. If you need to
