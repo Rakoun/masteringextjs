@@ -4,6 +4,10 @@
 Ext.define('Packt.view.login.Login', { // #1
     extend: 'Ext.window.Window', // #2
     xtype: 'login-dialog', // #3
+    requires: [
+        'Packt.view.login.LoginController'
+    ],
+    controller: 'login',
     autoShow: true, // #4
     height: 170, // #5
     width: 360,
@@ -19,6 +23,7 @@ Ext.define('Packt.view.login.Login', { // #1
     items: [
         {
             xtype: 'form', //#14
+            reference: 'form',
             bodyPadding: 15, //#15
             defaults: { //#16
                 xtype: 'textfield', //#17
@@ -55,17 +60,23 @@ Ext.define('Packt.view.login.Login', { // #1
                         {
                             xtype: 'button', //#26
                             iconCls: 'fa fa-times fa-lg',
-                            text: 'Cancel'
+                            text: 'Cancel',
+                            listeners: {
+                                click: 'onButtonClickCancel'
+                            }
                         },
                         {
                             xtype: 'button', //#27
                             formBind: true, //#28
                             iconCls: 'fa fa-sign-in fa-lg',
-                            text: 'Submit'
+                            text: 'Submit',
+                            listeners: {
+                                click: 'onButtonClickSubmit'
+                            }
                         }
                     ]
                 }
             ]
         }
-    ]
+    ],
 });
