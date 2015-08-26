@@ -34,7 +34,7 @@ Ext.define('Pack.Application', {
                 listeners: {
                     afteranimate: function(el, startTime, eOpts ){
                         Ext.widget('login-dialog');
-                        console.log("coucou");
+                        //console.log("login-dialog");
                     }
                 }
             });

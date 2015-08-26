@@ -28,6 +28,43 @@ Ext.define('Packt.view.login.LoginController', { // #1
             failure: 'onLoginFailure' // #7
         });
     }, // #8
-    onLoginFailure: function(form, action) { }, // #9
-    onLoginSuccess: function(form, action) { } // #10
+    onLoginFailure: function(form, action) {
+        console.log(action);
+        var result = Ext.JSON.decode(action.response.responseText, true);
+
+        if(!result) {
+            result = {};
+            result.success = false;
+            result.msg = action.response.responseText;
+        }
+        switch(action.failureType) {
+            case Ext.form.action.Action.CLIENT_INVALID: //#5
+                Ext.Msg.show({
+                    title:'Error!',
+                    msg: 'Form fields may not be submitted with invalid values',
+                    icon: Ext.Msg.ERROR,
+                    buttons: Ext.Msg.OK
+                });
+                break;
+            case Ext.form.action.Action.CONNECT_FAILURE: //#6
+                Ext.Msg.show({
+                    title:'Error!',
+                    msg: 'Form fields may not be submitted with invalid values',
+                    icon: Ext.Msg.ERROR,
+                    buttons: Ext.Msg.OK
+                });
+                break;
+            case Ext.form.action.Action.SERVER_INVALID: //#7
+                Ext.Msg.show({
+                    title: 'Error!',
+                    msg: result.msg, //#8
+                    icon: Ext.Msg.ERROR,
+                    buttons: Ext.Msg.OK
+                });
+        }
+    }, // #9
+    onLoginSuccess: function(form, action) {
+        this.getView().close();
+        Ext.create('Packt.view.main.Main');
+    } // #10
 });
