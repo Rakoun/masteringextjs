@@ -7,10 +7,11 @@
  */
 $server = "127.0.0.1";
 $user = "root";
-$pass = "root";
+$pass = "281275";
 $dbName = "sakila";
+$dbport = "8889";
 
-$mysqli = new mysqli($server, $user, $pass, $dbName);
+$mysqli = new mysqli($server, $user, $pass, $dbName, $dbport);
 /* check connection */
 if ($mysqli->connect_errno) {
     printf("Connect failed: %s\n", mysqli_connect_error());

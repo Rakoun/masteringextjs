@@ -1,11 +1,11 @@
 /**
  * Created by rgeromegnace on 31/07/15.
  */
-Ext.define('Packt.view.login.Login', { // #1
+Ext.define('Pack.view.login.Login', { // #1
     extend: 'Ext.window.Window', // #2
     xtype: 'login-dialog', // #3
     requires: [
-        'Packt.view.login.LoginController'
+        'Pack.view.login.LoginController'
     ],
     controller: 'login',
     autoShow: true, // #4

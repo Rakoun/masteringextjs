@@ -1,7 +1,7 @@
 /**
  * Created by rgeromegnace on 10/08/15.
  */
-Ext.define('Packt.view.login.LoginController', { // #1
+Ext.define('Pack.view.login.LoginController', { // #1
     extend: 'Ext.app.ViewController', // #2
     alias: 'controller.login', // #3
     onTextFieldSpecialKey: function(field, e, options){ }, // #4
@@ -65,6 +65,6 @@ Ext.define('Packt.view.login.LoginController', { // #1
     }, // #9
     onLoginSuccess: function(form, action) {
         this.getView().close();
-        Ext.create('Packt.view.main.Main');
+        Ext.create('Pack.view.main.Main');
     } // #10
 });

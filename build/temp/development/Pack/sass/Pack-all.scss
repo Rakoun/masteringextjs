@@ -911,11 +911,11 @@ $include-extthemeneptune-toolbar-toolbar: true;
 $include-pack-application: true;
 $include-pack-controller-main: true;
 $include-pack-controller-root: true;
+$include-pack-view-login-login: true;
+$include-pack-view-login-logincontroller: true;
 $include-pack-view-main-main: true;
 $include-pack-view-main-maincontroller: true;
 $include-pack-view-main-mainmodel: true;
-$include-packt-view-login-login: true;
-$include-packt-view-login-logincontroller: true;
 /* including package ext-theme-base */
 @import '../../../../../ext/packages/ext-theme-base/sass/etc/all';
 /* including package ext-theme-neutral */
