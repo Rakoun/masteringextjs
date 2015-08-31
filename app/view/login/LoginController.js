@@ -4,6 +4,9 @@
 Ext.define('Pack.view.login.LoginController', { // #1
     extend: 'Ext.app.ViewController', // #2
     alias: 'controller.login', // #3
+    requires: [
+        'Pack.util.Util'
+    ],
     onTextFieldSpecialKey: function(field, e, options){ }, // #4
     onTextFieldKeyPress: function(field, e, options){ }, // #5
     onButtonClickCancel: function(button, e, options){
@@ -30,7 +33,7 @@ Ext.define('Pack.view.login.LoginController', { // #1
     }, // #8
     onLoginFailure: function(form, action) {
         console.log(action);
-        var result = Ext.JSON.decode(action.response.responseText, true);
+        var result = Pack.util.Util.decodeJSON(action.response.responseText);
 
         if(!result) {
             result = {};
@@ -39,28 +42,13 @@ Ext.define('Pack.view.login.LoginController', { // #1
         }
         switch(action.failureType) {
             case Ext.form.action.Action.CLIENT_INVALID: //#5
-                Ext.Msg.show({
-                    title:'Error!',
-                    msg: 'Form fields may not be submitted with invalid values',
-                    icon: Ext.Msg.ERROR,
-                    buttons: Ext.Msg.OK
-                });
+                Pack.util.Util.showErrorMsg('Form fields may not be submitted with invalid values');
                 break;
             case Ext.form.action.Action.CONNECT_FAILURE: //#6
-                Ext.Msg.show({
-                    title:'Error!',
-                    msg: 'Form fields may not be submitted with invalid values',
-                    icon: Ext.Msg.ERROR,
-                    buttons: Ext.Msg.OK
-                });
+                Pack.util.Util.showErrorMsg('Form fields may not be submitted with invalid values');
                 break;
             case Ext.form.action.Action.SERVER_INVALID: //#7
-                Ext.Msg.show({
-                    title: 'Error!',
-                    msg: result.msg, //#8
-                    icon: Ext.Msg.ERROR,
-                    buttons: Ext.Msg.OK
-                });
+                Pack.util.Util.showErrorMsg(result.msg);
         }
     }, // #9
     onLoginSuccess: function(form, action) {
