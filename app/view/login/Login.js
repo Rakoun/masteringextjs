@@ -32,7 +32,10 @@ Ext.define('Pack.view.login.Login', { // #1
                 allowBlank: false, // #21
                 vtype: 'alphanum', // #22
                 minLength: 3, // #23
-                msgTarget: 'under' // #24
+                msgTarget: 'under', // #24
+                listeners: {
+                    specialKey: 'onTextFieldSpecialKey'
+                }
             },
             items: [
                 {

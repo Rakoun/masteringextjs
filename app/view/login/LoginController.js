@@ -23,6 +23,7 @@ Ext.define('Pack.view.login.LoginController', { // #1
     doLogin: function() {
         var me = this,
             form = me.lookupReference('form');
+        this.getView().mask('Authenticating... Please wait...');
         form.submit({
             clientValidation: true, // #3
             url: 'php/security/login.php', // #4
@@ -32,7 +33,8 @@ Ext.define('Pack.view.login.LoginController', { // #1
         });
     }, // #8
     onLoginFailure: function(form, action) {
-        console.log(action);
+        //console.log(action);
+        this.getView().unmask();
         var result = Pack.util.Util.decodeJSON(action.response.responseText);
 
         if(!result) {
@@ -52,7 +54,13 @@ Ext.define('Pack.view.login.LoginController', { // #1
         }
     }, // #9
     onLoginSuccess: function(form, action) {
+        this.getView().unmask();
         this.getView().close();
         Ext.create('Pack.view.main.Main');
-    } // #10
+    }, // #10
+    onTextFieldSpecialKey: function(field, e, option) {
+        if(e.getKey() === e.ENTER) {
+            this.doLogin();
+        }
+    },
 });
